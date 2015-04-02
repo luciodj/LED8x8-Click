@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC16F1509" mcc_version="v2.10.3">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="NCO1SEL" option="RC1"/>
+            <setting name="SSSEL" option="RC6"/>
+            <setting name="CLC1SEL" option="RA2"/>
+            <setting name="T1GSEL" option="RA4"/>
+            <setting name="package" option="QFN20"/>
+            <setting name="sorting" option="true"/>
+            <resource customName="POT" digital="false" direction="INPUT" function="AN3" ioc="0" module="ADC" name="RA4" start="false" type="pin" wpu="false"/>
+            <resource customName="SDI" digital="true" direction="INPUT" function="SDI" ioc="0" module="MSSP" name="RB4" start="false" type="pin" wpu="false"/>
+            <resource customName="SCK" digital="true" direction="OUTPUT" function="SCK" ioc="0" module="MSSP" name="RB6" start="false" type="pin" wpu="false"/>
+            <resource customName="CS" digital="true" direction="OUTPUT" function="RC4" module="GPIO" name="RC4" start="true" type="pin" wpu="false"/>
+            <resource customName="SDO" digital="true" direction="OUTPUT" function="SDO" module="MSSP" name="RC7" start="false" type="pin" wpu="false"/>
+            <file checksum="4002319790" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="2545830002" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="" name="Initialize">
+                <setting name="SCS" option="FOSC" register="OSCCON"/>
+                <setting name="IRCF" option="500KHz_MF" register="OSCCON"/>
+                <setting name="OSTS" option="intosc" register="OSCSTAT"/>
+                <setting name="HFIOFR" option="disabled" register="OSCSTAT"/>
+                <setting name="HFIOFS" option="not0.5percent_acc" register="OSCSTAT"/>
+                <setting name="LFIOFR" option="disabled" register="OSCSTAT"/>
+                <additionalSetting name="pllMultiplier" option=""/>
+                <additionalSetting name="extclk" option="1.0 MHz"/>
+            </initializer>
+            <setting name="IESO" option="ON"/>
+            <setting name="BOREN" option="ON"/>
+            <setting name="PWRTE" option="OFF"/>
+            <setting name="FOSC" option="INTOSC"/>
+            <setting name="FCMEN" option="ON"/>
+            <setting name="MCLRE" option="OFF"/>
+            <setting name="CP" option="OFF"/>
+            <setting name="WDTE" option="OFF"/>
+            <setting name="CLKOUTEN" option="OFF"/>
+            <setting name="WRT" option="OFF"/>
+            <setting name="LPBOR" option="OFF"/>
+            <setting name="LVP" option="OFF"/>
+            <setting name="STVREN" option="ON"/>
+            <setting name="BORV" option="LO"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="703175892" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="2602044752" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+    </managers>
+    <modules>
+        <module generated="true" mode="SPI Master" name="MSSP" order="0" reloadPin="manual" type="mssp">
+            <initializer comment="" name="Initialize">
+                <setting name="BF" option="RCinprocess_TXcomplete" register="SSP1STAT"/>
+                <setting name="UA" option="dontupdate" register="SSP1STAT"/>
+                <setting name="SMP" option="Sample At Middle" register="SSP1STAT"/>
+                <setting name="P" option="stopbit_notdetected" register="SSP1STAT"/>
+                <setting name="S" option="startbit_notdetected" register="SSP1STAT"/>
+                <setting name="R_nW" option="write_noTX" register="SSP1STAT"/>
+                <setting name="CKE" option="Active to Idle" register="SSP1STAT"/>
+                <setting name="D_nA" option="lastbyte_address" register="SSP1STAT"/>
+                <setting name="SSPEN" option="enabled" register="SSP1CON1"/>
+                <setting name="WCOL" option="no_collision" register="SSP1CON1"/>
+                <setting name="SSPOV" option="no_overflow" register="SSP1CON1"/>
+                <setting name="CKP" option="Idle:Low, Active:High" register="SSP1CON1"/>
+                <setting name="SSPM" option="FOSC/4" register="SSP1CON1"/>
+                <setting name="ADD" option="0" register="SSP1ADD"/>
+                <additionalSetting name="frequency" option="125.0 kHz"/>
+            </initializer>
+            <setting name="mode" option="false"/>
+            <setting name="SSPI" option="false"/>
+            <setting name="BCLI" option="false"/>
+            <setting name="WriteBufferSize" option="8"/>
+            <setting name="ReadBufferSize" option="8"/>
+            <file checksum="15883182" modified="false" name="spi.c" path="mcc_generated_files/spi.c"/>
+            <file checksum="814379750" modified="false" name="spi.h" path="mcc_generated_files/spi.h"/>
+        </module>
+        <module generated="true" mode="ADC" name="ADC" order="1" reloadPin="manual" type="adc_sarcore_10bit">
+            <initializer comment="" name="Initialize">
+                <setting name="GO_nDONE" option="stop" register="ADCON0"/>
+                <setting name="ADON" option="enabled" register="ADCON0"/>
+                <setting name="CHS" option="AN0" register="ADCON0"/>
+                <setting name="ADPREF" option="VDD" register="ADCON1"/>
+                <setting name="ADFM" option="left" register="ADCON1"/>
+                <setting name="ADCS" option="FOSC/2" register="ADCON1"/>
+                <setting name="TRIGSEL" option="no_auto_trigger" register="ADCON2"/>
+                <setting name="ADRESL" option="0x0" register="ADRESL"/>
+                <setting name="ADRESH" option="0x0" register="ADRESH"/>
+            </initializer>
+            <setting name="ADI" option="false"/>
+            <resource customName="POT" function="AN3" name="RA4" type="pin"/>
+            <file checksum="1370225774" modified="false" name="adc.c" path="mcc_generated_files/adc.c"/>
+            <file checksum="1615158344" modified="false" name="adc.h" path="mcc_generated_files/adc.h"/>
+        </module>
+        <module generated="true" mode="GPIO" name="GPIO" order="2" reloadPin="manual" type="GPIO">
+            <resource customName="CS" digital="true" direction="OUTPUT" function="RC4" module="GPIO" name="RC4" start="true" type="pin" wpu="false"/>
+        </module>
+        <module generated="true" mode="Timer" name="TMR0" order="3" reloadPin="manual" type="tmr_0">
+            <initializer comment="" name="Initialize">
+                <setting name="TMR0CS" option="FOSC/4" register="OPTION_REG"/>
+                <setting name="TMR0SE" option="Increment_hi_lo" register="OPTION_REG"/>
+                <setting name="PS" option="1:64" register="OPTION_REG"/>
+                <setting name="PSA" option="assigned" register="OPTION_REG"/>
+                <setting name="INTEDG" option="rising" register="OPTION_REG"/>
+                <setting name="nWPUEN" option="disabled" register="OPTION_REG"/>
+                <setting name="TMR0" option="0" register="TMR0"/>
+                <additionalSetting name="timerstart" option="enabled"/>
+                <additionalSetting name="extfreq" option="100 kHz"/>
+            </initializer>
+            <setting name="TMRI" option="false"/>
+            <setting name="ticker" option="0"/>
+            <file checksum="1165255274" modified="false" name="tmr0.c" path="mcc_generated_files/tmr0.c"/>
+            <file checksum="1206852424" modified="false" name="tmr0.h" path="mcc_generated_files/tmr0.h"/>
+        </module>
+    </modules>
+</configuration>
