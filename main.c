@@ -49,21 +49,17 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 uint8_t symbol[] = { 0, 1, 2, 4, 8, 16, 32, 64, 128};
 
 void RED8x8_Write( uint8_t reg, uint8_t b)
+// send register / value pair
 {
-    // activate CS
     CS_SetLow();
-
-    // send register / value pair
-    SPI_Exchange8bit( reg);
-    SPI_Exchange8bit( b);
-
-    // deactivate CS
+      SPI_Exchange8bit( reg);
+      SPI_Exchange8bit( b);
     CS_SetHigh();
 }
 
 
 /*
-                         Main application
+     Main application
  */
 void main(void)
 {
